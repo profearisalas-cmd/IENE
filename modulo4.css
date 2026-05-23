@@ -1,0 +1,94 @@
+:root {
+    --primary: #00A896;
+    --secondary: #F0A500;
+    --accent: #FF5722;
+    --bg-light: #F4F7F6;
+    --card-bg: #FFFFFF;
+    --text-dark: #2C3E50;
+    --text-muted: #7F8C8D;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Nunito', sans-serif; background-color: var(--bg-light); color: var(--text-dark);
+}
+
+.app-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2rem; background: var(--card-bg); box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 10;
+}
+.back-btn { background: none; border: none; font-weight: 700; color: var(--primary); cursor: pointer; font-size: 1rem; }
+.level-info h1 { font-family: 'Outfit'; font-size: 1.5rem; }
+.score-display { font-weight: 800; color: var(--accent); }
+
+/* Main layout */
+.feria-container { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+
+.action-panel {
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(135deg, var(--primary), #00D2BA);
+    color: white; padding: 2rem; border-radius: 20px; margin-bottom: 2rem;
+    box-shadow: 0 8px 15px rgba(0,168,150,0.2);
+}
+.welcome-text h2 { font-family: 'Outfit'; font-size: 2rem; margin-bottom: 0.5rem; }
+
+.btn-primary { background: var(--secondary); color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 12px; font-weight: bold; cursor: pointer; transition: transform 0.2s; font-size: 1rem; }
+.btn-primary:hover { transform: translateY(-3px); }
+.btn-large { font-size: 1.2rem; padding: 1rem 2rem; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.btn-full { width: 100%; margin-top: 1rem; }
+
+/* Grid del Muro */
+.wall-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;
+}
+
+.post-card {
+    background: var(--card-bg); padding: 1.5rem; border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05); transition: transform 0.3s;
+    display: flex; flex-direction: column; justify-content: space-between;
+}
+.post-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+
+.post-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.post-avatar { width: 50px; height: 50px; border-radius: 50%; background: #eee; }
+.post-author { font-weight: bold; font-size: 1.1rem; }
+.post-date { color: var(--text-muted); font-size: 0.85rem; }
+
+.post-content { font-size: 1.05rem; line-height: 1.5; margin-bottom: 1.5rem; flex-grow: 1; }
+
+.post-interaction {
+    background: #F8FAFC; padding: 1rem; border-radius: 12px;
+}
+.post-interaction label { display: block; font-size: 0.9rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--primary); }
+
+.input-row { display: flex; gap: 0.5rem; }
+.input-row input { flex-grow: 1; padding: 0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; font-family: monospace; font-size: 1rem; }
+.input-row button { background: var(--primary); color: white; border: none; padding: 0 1rem; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+.feedback { margin-top: 0.5rem; font-size: 0.9rem; font-weight: bold; display: none; }
+.feedback.success { color: #2ECC71; display: block; }
+.feedback.error { color: #E74C3C; display: block; }
+
+/* Modals */
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+    display: none; justify-content: center; align-items: center; z-index: 100;
+}
+.overlay.active { display: flex; animation: fadeIn 0.3s; }
+.modal-content { background: white; padding: 2.5rem; border-radius: 20px; max-width: 500px; width: 90%; position: relative; }
+.close-btn { position: absolute; top: 1rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
+
+.modal-content h2 { margin-bottom: 0.5rem; color: var(--primary); }
+.input-group { margin-top: 1.5rem; text-align: left; }
+.input-group label { display: block; font-weight: bold; margin-bottom: 0.5rem; }
+.input-group textarea, .input-group input { width: 100%; padding: 0.8rem; border: 2px solid #E2E8F0; border-radius: 8px; font-family: inherit; font-size: 1rem; }
+
+.text-center { text-align: center; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 768px) {
+    .action-panel { flex-direction: column; text-align: center; gap: 1.5rem; }
+}

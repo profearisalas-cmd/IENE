@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación Interactiva - Ecuaciones en mi Barrio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="presentacion.css">
+</head>
+<body>
+
+    <!-- Fondo dinámico animado -->
+    <div class="background-animation"></div>
+
+    <!-- VISTA 0: PORTADA -->
+    <section id="view-cover" class="slide-view active">
+        <div class="cover-content">
+            <h1>Ecuaciones en mi Barrio</h1>
+            <h2>Prototipo de Ambiente Virtual de Aprendizaje (AVA)</h2>
+            <p>Sustentación del Diseño Instruccional y Desarrollo</p>
+            <button class="btn-primary start-btn" onclick="navigateTo('view-hub')">Entrar a la Presentación 🚀</button>
+        </div>
+    </section>
+
+    <!-- VISTA 1: NAVEGACIÓN NO LINEAL (HUB PRINCIPAL) -->
+    <section id="view-hub" class="slide-view">
+        <h2 class="section-title">Mapa de la Presentación</h2>
+        <p class="subtitle">Selecciona el tema que deseas explorar. Puedes navegar en cualquier orden.</p>
+        
+        <div class="hub-grid">
+            <div class="hub-card" onclick="navigateTo('view-context')">
+                <div class="icon">📍</div>
+                <h3>1. Contexto y Población</h3>
+                <p>Necesidad educativa y perfil del estudiante en El Pozón.</p>
+            </div>
+            <div class="hub-card" onclick="navigateTo('view-design')">
+                <div class="icon">🛠️</div>
+                <h3>2. Diseño y Herramientas</h3>
+                <p>Estructura del AVA y tecnologías utilizadas.</p>
+            </div>
+            <div class="hub-card" onclick="navigateTo('view-pedagogy')">
+                <div class="icon">🧠</div>
+                <h3>3. Pedagogía y DUA</h3>
+                <p>Estrategias de aprendizaje e inclusión.</p>
+            </div>
+            <div class="hub-card" onclick="navigateTo('view-outcomes')">
+                <div class="icon">🎯</div>
+                <h3>4. Resultados Esperados</h3>
+                <p>Competencias a desarrollar en los estudiantes.</p>
+            </div>
+        </div>
+
+        <div class="live-demo-section">
+            <button class="btn-secondary" onclick="window.open('index.html', '_blank')">🔗 Abrir Prototipo Funcional del AVA</button>
+        </div>
+    </section>
+
+    <!-- VISTA 2: CONTEXTO Y POBLACIÓN -->
+    <section id="view-context" class="slide-view">
+        <button class="back-btn" onclick="navigateTo('view-hub')">⬅ Volver al Mapa</button>
+        <h2 class="section-title">Contexto y Población Meta</h2>
+        
+        <div class="split-layout">
+            <div class="interactive-panel">
+                <button class="tab-btn active" onclick="showTab('context', 'tab-need')">La Necesidad</button>
+                <button class="tab-btn" onclick="showTab('context', 'tab-population')">Población Meta</button>
+                <button class="tab-btn" onclick="showTab('context', 'tab-motivation')">Motivaciones</button>
+            </div>
+            
+            <div class="content-panel">
+                <div id="tab-need" class="tab-content active">
+                    <h3>Necesidad Educativa Identificada</h3>
+                    <p>En el barrio El Pozón, los estudiantes presentan dificultades para abstraer conceptos algebraicos (resolver ecuaciones lineales y traducir problemas cotidianos al lenguaje matemático). Esto genera frustración y deserción en el área de matemáticas debido al uso de metodologías tradicionales y descontextualizadas.</p>
+                </div>
+                <div id="tab-population" class="tab-content">
+                    <h3>Características de la Población</h3>
+                    <ul>
+                        <li><strong>Edad:</strong> 12 a 15 años.</li>
+                        <li><strong>Nivel:</strong> Básica Secundaria (Grados 7° y 8°).</li>
+                        <li><strong>Contexto:</strong> Barrio El Pozón (Cartagena). Zonas vulnerables con dinámicas de comercio local informal.</li>
+                    </ul>
+                </div>
+                <div id="tab-motivation" class="tab-content">
+                    <h3>Intereses y Motivaciones</h3>
+                    <p>Los jóvenes están inmersos en la cultura digital y el consumo móvil. Responden positivamente a los videojuegos, la competencia amistosa y las narrativas donde pueden verse reflejados (como la historia central del personaje "Lucho").</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISTA 3: DISEÑO DEL AVA -->
+    <section id="view-design" class="slide-view">
+        <button class="back-btn" onclick="navigateTo('view-hub')">⬅ Volver al Mapa</button>
+        <h2 class="section-title">Diseño del Prototipo y Herramientas</h2>
+        
+        <div class="accordion" id="design-accordion">
+            <div class="accordion-item" onclick="toggleAccordion(this)">
+                <div class="accordion-header">📦 1. Estructura de Módulos (Clic para expandir)</div>
+                <div class="accordion-body">
+                    <ul>
+                        <li><strong>Dashboard Gamificado:</strong> Mapa interactivo con control de progreso e insignias.</li>
+                        <li><strong>Módulo 1: El Lenguaje de la Tienda:</strong> Introducción al concepto de variable.</li>
+                        <li><strong>Módulo 2: Balanza de Decisiones:</strong> Simulador virtual interactivo para despejar X.</li>
+                        <li><strong>Módulo 3: Retos del Pozón:</strong> Storytelling y construcción de modelos mediante chat.</li>
+                        <li><strong>Módulo 4: Feria de Soluciones:</strong> Muro colaborativo estilo Padlet.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="accordion-item" onclick="toggleAccordion(this)">
+                <div class="accordion-header">💻 2. Herramientas Digitales Integradas</div>
+                <div class="accordion-body">
+                    <p>Para este prototipo funcional se priorizó un entorno ligero (PWA/Mobile-First) usando:</p>
+                    <div class="badges-container">
+                        <span class="tech-badge">HTML5 Semántico</span>
+                        <span class="tech-badge">CSS3 (Grid/Flexbox)</span>
+                        <span class="tech-badge">Vanilla JavaScript</span>
+                        <span class="tech-badge">LMS Compatible (Moodle)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISTA 4: PEDAGOGÍA Y DUA -->
+    <section id="view-pedagogy" class="slide-view">
+        <button class="back-btn" onclick="navigateTo('view-hub')">⬅ Volver al Mapa</button>
+        <h2 class="section-title">Enfoques Inclusivos y Pedagógicos</h2>
+        
+        <div class="pedagogy-grid">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Diseño Universal del Aprendizaje (DUA)</h3>
+                        <p>Pasa el cursor / Toca para ver la implementación</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <ul>
+                            <li><strong>Representación:</strong> Texto simplificado, avatares visuales, contraste alto.</li>
+                            <li><strong>Expresión:</strong> Inputs múltiples (arrastrar y soltar, botones, texto directo).</li>
+                            <li><strong>Implicación:</strong> Autonomía de navegación, recompensas constantes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Estrategias Pedagógicas</h3>
+                        <p>Pasa el cursor / Toca para ver la implementación</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <ul>
+                            <li><strong>Gamificación:</strong> Economía de fichas (pesos), insignias (Tortuga, Iguana, Jaguar).</li>
+                            <li><strong>Aprendizaje Colaborativo:</strong> Muro social interactivo en el Módulo 4.</li>
+                            <li><strong>ABP y Storytelling:</strong> Retos inmersivos con el personaje "Lucho".</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISTA 5: RESULTADOS -->
+    <section id="view-outcomes" class="slide-view">
+        <button class="back-btn" onclick="navigateTo('view-hub')">⬅ Volver al Mapa</button>
+        <h2 class="section-title">Resultados de Aprendizaje Esperados</h2>
+        
+        <div class="outcomes-container">
+            <div class="outcome-node">
+                <div class="node-icon">1</div>
+                <div class="node-text"><strong>Traducción Algebraica:</strong> Convertir situaciones cotidianas y comerciales de su entorno en expresiones algebraicas formales.</div>
+            </div>
+            <div class="outcome-node">
+                <div class="node-icon">2</div>
+                <div class="node-text"><strong>Resolución de Ecuaciones:</strong> Aplicar las propiedades de la igualdad matemática para resolver ecuaciones lineales de primer grado con una variable.</div>
+            </div>
+            <div class="outcome-node">
+                <div class="node-icon">3</div>
+                <div class="node-text"><strong>Modelación:</strong> Crear de manera autónoma modelos matemáticos (retos) para que sean evaluados colaborativamente.</div>
+            </div>
+            <div class="outcome-node">
+                <div class="node-icon">4</div>
+                <div class="node-text"><strong>Actitud Positiva:</strong> Reducir la ansiedad matemática, demostrando mayor participación e interés hacia el álgebra.</div>
+            </div>
+        </div>
+    </section>
+
+    <script src="presentacion.js"></script>
+</body>
+</html>

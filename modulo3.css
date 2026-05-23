@@ -1,0 +1,123 @@
+:root {
+    --primary: #00A896;
+    --secondary: #F0A500;
+    --accent: #FF5722;
+    --bg-light: #F4F7F6;
+    --chat-sent: #E1F5FE;
+    --chat-received: #FFFFFF;
+    --text-dark: #2C3E50;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.app-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 2rem; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.back-btn {
+    background: none; border: none; font-weight: 700; color: var(--primary); cursor: pointer;
+}
+
+.level-info h1 { font-family: 'Outfit'; font-size: 1.5rem; }
+.score-display { font-weight: 800; color: var(--secondary); }
+
+/* Chat Container */
+.story-container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+
+.dialogue-scene {
+    display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 3rem;
+}
+
+.message { display: flex; align-items: flex-end; gap: 1rem; animation: slideUp 0.5s ease; }
+.message.sent { justify-content: flex-end; }
+
+.avatar { width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--primary); }
+
+.bubble {
+    padding: 1.2rem; border-radius: 20px; font-size: 1.1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); max-width: 70%; line-height: 1.4;
+}
+
+.received .bubble { background-color: var(--chat-received); border-bottom-left-radius: 0; }
+.sent .bubble { background-color: var(--chat-sent); border-bottom-right-radius: 0; }
+
+/* Equation Builder */
+.equation-builder {
+    background: #fff; padding: 2rem; border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05); text-align: center;
+}
+
+.equation-builder h3 { font-family: 'Outfit'; margin-bottom: 0.5rem; color: var(--primary); }
+.instruction { color: #7F8C8D; margin-bottom: 2rem; }
+
+.equation-slots {
+    display: flex; justify-content: center; align-items: center; gap: 1rem;
+    margin-bottom: 2rem; flex-wrap: wrap;
+}
+
+.slot {
+    width: 80px; height: 60px; border: 3px dashed #BDC3C7; border-radius: 12px;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 1.5rem; font-weight: bold; color: #BDC3C7; cursor: pointer;
+    transition: all 0.2s; background: #f9f9f9;
+}
+
+.slot.selected {
+    border-color: var(--secondary); background: #FFF8E1; color: var(--secondary);
+    transform: scale(1.05);
+}
+
+.slot.filled {
+    border-style: solid; border-color: var(--primary); color: var(--primary);
+    background: #E8F8F5;
+}
+
+.math-op { font-size: 2rem; font-weight: bold; color: var(--text-dark); }
+
+/* Options */
+.options-panel {
+    display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2rem;
+}
+
+.number-block {
+    background: var(--text-dark); color: white; border: none;
+    padding: 1rem 2rem; border-radius: 12px; font-size: 1.5rem; font-weight: bold;
+    cursor: pointer; box-shadow: 0 4px 0 #1A252F; transition: transform 0.1s;
+}
+
+.number-block:active { transform: translateY(4px); box-shadow: 0 0 0 #1A252F; }
+
+/* Check button */
+.btn-check {
+    background: var(--primary); color: white; border: none; padding: 1rem 2.5rem;
+    border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer;
+    transition: all 0.3s;
+}
+.btn-check:disabled { background: #BDC3C7; cursor: not-allowed; }
+
+.feedback-msg { margin-top: 1.5rem; font-weight: bold; font-size: 1.1rem; padding: 1rem; border-radius: 10px; }
+.feedback-msg.error { background: #FDEDEC; color: #E74C3C; }
+.hidden { display: none; }
+
+/* Victory Screen */
+.victory-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 100;
+}
+.victory-card {
+    background: white; padding: 3rem; border-radius: 20px; text-align: center; max-width: 500px;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.victory-card h2 { color: var(--secondary); font-size: 2rem; margin-bottom: 1rem; }
+.reward { background: #E8F8F5; color: var(--primary); padding: 1rem; border-radius: 12px; font-weight: bold; font-size: 1.2rem; margin: 1.5rem 0; }
+.btn-primary { background: var(--primary); color: white; border: none; padding: 1rem 2rem; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }

@@ -1,0 +1,176 @@
+:root {
+    --primary: #00A896;
+    --secondary: #F0A500;
+    --accent: #FF5722;
+    --bg-light: #F4F7F6;
+    --wood: #8B5A2B;
+    --metal: #BDC3C7;
+    --text-dark: #2C3E50;
+    --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Header */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--white);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 10;
+}
+
+.back-btn {
+    background: none; border: none;
+    font-size: 1rem; font-weight: 700;
+    color: var(--primary); cursor: pointer;
+}
+
+.level-info { text-align: center; }
+.level-info h1 { font-family: 'Outfit'; font-size: 1.5rem; color: var(--text-dark); }
+.score-display { font-weight: 800; font-size: 1.2rem; color: var(--secondary); }
+
+/* Layout principal */
+.simulator-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: relative;
+}
+
+/* Feedback */
+.feedback-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.character img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--secondary); }
+.speech-bubble {
+    background: var(--white); padding: 1rem 1.5rem;
+    border-radius: 20px; border-top-left-radius: 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    font-size: 1.1rem; max-width: 600px; font-weight: 600;
+}
+
+/* Equation Display */
+.equation-display {
+    display: flex; justify-content: center; align-items: center; gap: 2rem;
+    font-family: 'Outfit', sans-serif; font-size: 2.5rem; font-weight: 800;
+    margin-bottom: 2rem;
+}
+.math-sign { color: var(--accent); transition: transform 0.3s; }
+.math-expr { padding: 0.5rem 1rem; background: var(--white); border-radius: 12px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05); }
+
+/* Balance Scale */
+.balance-area {
+    display: flex; justify-content: center; align-items: center;
+    flex-grow: 1; min-height: 300px; perspective: 1000px;
+}
+
+.scale-mechanism { position: relative; width: 600px; height: 300px; display: flex; flex-direction: column; align-items: center; }
+
+.beam {
+    width: 100%; height: 16px; background: var(--wood); border-radius: 8px;
+    position: relative; top: 100px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.center-pivot {
+    position: absolute; left: 50%; top: -10px; transform: translateX(-50%);
+    width: 24px; height: 24px; background: var(--metal); border-radius: 50%; z-index: 2;
+    border: 4px solid #7f8c8d;
+}
+
+.base {
+    width: 40px; height: 150px; background: #7f8c8d;
+    position: absolute; bottom: 0; border-radius: 4px 4px 0 0;
+}
+
+.base::after {
+    content: ''; position: absolute; bottom: 0; left: -40px; width: 120px; height: 20px; background: #34495e; border-radius: 10px;
+}
+
+.pan {
+    position: absolute; top: 16px; width: 150px; height: 20px; background: #95a5a6;
+    border-radius: 0 0 50% 50%; display: flex; justify-content: center; align-items: flex-end; flex-wrap: wrap-reverse;
+    gap: 5px; padding-bottom: 5px;
+    /* Para contrarrestar la rotación del beam y mantener los platillos horizontales */
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.left-pan { left: 10px; }
+.right-pan { right: 10px; }
+
+/* Suspension strings */
+.pan::before, .pan::after {
+    content: ''; position: absolute; top: -80px; width: 2px; height: 80px; background: var(--metal);
+}
+.pan::before { left: 0; transform: rotate(15deg); transform-origin: bottom; }
+.pan::after { right: 0; transform: rotate(-15deg); transform-origin: bottom; }
+
+/* Draggable / Clickable Items */
+.item-box {
+    width: 40px; height: 40px; background: var(--secondary); border: 2px solid #b87d00;
+    border-radius: 8px; display: flex; justify-content: center; align-items: center;
+    font-weight: bold; color: white; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: pointer; transition: transform 0.2s;
+}
+.item-coin {
+    width: 30px; height: 30px; background: #FFD700; border: 2px solid #DAA520;
+    border-radius: 50%; display: flex; justify-content: center; align-items: center;
+    font-weight: bold; font-size: 0.8rem; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    cursor: pointer; transition: transform 0.2s;
+}
+
+.item-box:hover, .item-coin:hover { transform: scale(1.1) translateY(-5px); }
+
+/* Controls */
+.controls-panel {
+    background: var(--white); padding: 1.5rem; text-align: center;
+    border-top: 1px solid #E2E8F0;
+}
+.action-buttons { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+
+.btn-action {
+    background: var(--primary); color: white; border: none; padding: 0.8rem 1.5rem;
+    border-radius: 12px; font-weight: 700; font-size: 1rem; cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,168,150,0.3); transition: all 0.2s;
+}
+.btn-action:hover { background: #008f80; transform: translateY(-2px); }
+.btn-action:active { transform: translateY(0); }
+.manual-hint { margin-top: 1rem; color: var(--text-muted); }
+
+/* Victory Screen */
+.victory-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8); display: none; justify-content: center; align-items: center; z-index: 50;
+}
+.victory-card {
+    background: white; padding: 3rem; border-radius: 20px; text-align: center;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.victory-card h2 { color: var(--success-color, #2ECC71); font-size: 2.5rem; margin-bottom: 1rem; }
+.reward { background: #FFF3E0; color: #E65100; padding: 1rem; border-radius: 12px; font-weight: bold; font-size: 1.2rem; margin: 1.5rem 0; }
+.btn-primary { background: var(--secondary); color: white; border: none; padding: 1rem 2rem; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
+
+@keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+#confettiCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; }

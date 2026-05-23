@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 3 - Retos del Pozón</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="modulo3.css">
+</head>
+<body>
+    <header class="app-header">
+        <button class="back-btn" onclick="window.location.href='index.html'">⬅ Volver</button>
+        <div class="level-info">
+            <h1>🏍️ Retos del Pozón</h1>
+            <p id="missionIndicator">Misión 1 de 3: El Mototaxi</p>
+        </div>
+        <div class="score-display">🪙 2000 Pesos</div>
+    </header>
+
+    <main class="story-container">
+        <!-- Escena Conversacional -->
+        <section class="dialogue-scene" id="dialogueScene">
+            <!-- El contenido del chat se inyecta por JS -->
+        </section>
+
+        <!-- Área de Construcción de Ecuación -->
+        <section class="equation-builder">
+            <h3>Ayuda a Lucho a traducir esto al "Lenguaje Matemático":</h3>
+            <p class="instruction">Toca una casilla vacía y luego elige el número correcto abajo.</p>
+            
+            <div class="equation-slots" id="equationSlots">
+                <!-- Slots inyectados por JS -->
+            </div>
+
+            <!-- Opciones para elegir -->
+            <div class="options-panel" id="optionsPanel">
+                <!-- Bloques inyectados por JS -->
+            </div>
+
+            <div class="action-row">
+                <button class="btn-check" id="checkBtn" onclick="verifyEquation()" disabled>Verificar Ecuación</button>
+            </div>
+            
+            <!-- Feedback Visual -->
+            <div id="feedbackMsg" class="feedback-msg hidden"></div>
+        </section>
+
+        <!-- Pantalla de Éxito -->
+        <div class="victory-overlay" id="victoryScreen">
+            <div class="victory-card" id="victoryCard">
+                <!-- Contenido de victoria por JS -->
+            </div>
+        </div>
+    </main>
+
+    <script src="modulo3.js"></script>
+</body>
+</html>

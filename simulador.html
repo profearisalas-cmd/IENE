@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador: Balanza de Decisiones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="simulador.css">
+</head>
+<body>
+    <header class="app-header">
+        <button class="back-btn" onclick="window.location.href='index.html'">⬅ Volver al Mapa</button>
+        <div class="level-info">
+            <h1>⚖️ Balanza de Decisiones</h1>
+            <p id="levelIndicator">Nivel 1 de 3: Descubre el valor de la caja (X)</p>
+        </div>
+        <div class="score-display">🪙 <span id="pesos">1500</span> Pesos</div>
+    </header>
+
+    <main class="simulator-container">
+        <!-- Panel de Feedback (Personaje) -->
+        <section class="feedback-panel">
+            <div class="character">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lucho&backgroundColor=ffd5dc" alt="Lucho">
+            </div>
+            <div class="speech-bubble" id="speechBubble">
+                ¡Hey! La balanza está en equilibrio. Tenemos 2 cajas y 2 monedas a la izquierda, y 8 monedas a la derecha. ¿Cómo dejamos una sola caja solita?
+            </div>
+        </section>
+
+        <!-- Ecuación Matemática en Tiempo Real -->
+        <section class="equation-display">
+            <div class="math-expr" id="leftExpression">2X + 2</div>
+            <div class="math-sign" id="equalSign">=</div>
+            <div class="math-expr" id="rightExpression">8</div>
+        </section>
+
+        <!-- La Balanza -->
+        <section class="balance-area">
+            <div class="scale-mechanism">
+                <div class="beam" id="scaleBeam">
+                    <div class="pan left-pan" id="leftPan">
+                        <!-- Los items se inyectan por JS -->
+                    </div>
+                    <div class="center-pivot"></div>
+                    <div class="pan right-pan" id="rightPan">
+                        <!-- Los items se inyectan por JS -->
+                    </div>
+                </div>
+                <div class="base"></div>
+            </div>
+        </section>
+
+        <!-- Controles de Operación (DUA: Multiples formas de interacción) -->
+        <section class="controls-panel">
+            <h3>Acciones a ambos lados:</h3>
+            <div class="action-buttons">
+                <button class="btn-action" onclick="operateBothSides('subtract', 'coin')">➖ Quitar 1 Moneda</button>
+                <button class="btn-action" onclick="operateBothSides('add', 'coin')">➕ Añadir 1 Moneda</button>
+                <button class="btn-action" onclick="operateBothSides('divide', 'boxes')">➗ Dividir por cantidad de cajas</button>
+            </div>
+            <div class="manual-hint">
+                <small>💡 <i>Tip: También puedes hacer clic directamente en las monedas de los platillos para quitarlas una por una.</i></small>
+            </div>
+        </section>
+        
+        <!-- Pantalla de Victoria -->
+        <div class="victory-overlay" id="victoryScreen">
+            <div class="victory-card">
+                <h2>¡Coronaste! 🎉</h2>
+                <p>Descubriste que la caja misteriosa (X) vale: <strong id="xValueResult">3</strong> monedas.</p>
+                <div class="reward">+ 500 🪙 Pesos</div>
+                <button class="btn-primary" onclick="nextLevel()">Siguiente Reto ➡</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Efecto Confeti (Opcional, usando canvas en js) -->
+    <canvas id="confettiCanvas"></canvas>
+
+    <script src="simulador.js"></script>
+</body>
+</html>

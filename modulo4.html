@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 4 - Feria de Soluciones</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="modulo4.css">
+</head>
+<body>
+    <header class="app-header">
+        <button class="back-btn" onclick="window.location.href='index.html'">⬅ Volver</button>
+        <div class="level-info">
+            <h1>🎪 Feria de Soluciones</h1>
+            <p>Muro Colaborativo del Barrio</p>
+        </div>
+        <div class="score-display">🥇 Nivel Jaguar</div>
+    </header>
+
+    <main class="feria-container">
+        <!-- Panel de Bienvenida y Acción -->
+        <section class="action-panel">
+            <div class="welcome-text">
+                <h2>¡Bienvenidos a la Feria!</h2>
+                <p>Aquí todos comparten los retos que viven en su cuadra. Resuelve los de tus compañeros o publica el tuyo.</p>
+            </div>
+            <button class="btn-primary btn-large" onclick="openModal()">➕ Publicar mi Reto</button>
+        </section>
+
+        <!-- Muro de Retos (Grid) -->
+        <section class="wall-grid" id="wallGrid">
+            <!-- Las tarjetas se inyectan por JS -->
+        </section>
+    </main>
+
+    <!-- Modal para Publicar Nuevo Reto -->
+    <div class="overlay" id="createModal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">✖</button>
+            <h2>📝 Crea tu Reto</h2>
+            <p>Escribe una situación cotidiana y la ecuación secreta que la resuelve.</p>
+            
+            <form id="newChallengeForm" onsubmit="submitChallenge(event)">
+                <div class="input-group">
+                    <label>Tu Historia (El problema):</label>
+                    <textarea id="challengeText" rows="3" placeholder="Ej: Mi tía vende arepas a 1000 y jugos a 500..." required></textarea>
+                </div>
+                <div class="input-group">
+                    <label>La Ecuación (Para que otros la adivinen):</label>
+                    <input type="text" id="challengeEq" placeholder="Ej: 1000x + 500 = 3500" required>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Publicar en el Muro</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Victoria Final -->
+    <div class="overlay" id="finalVictory">
+        <div class="modal-content text-center">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem;">🎓 ¡Felicidades!</h1>
+            <p>Has completado todos los módulos del AVA <strong>"Ecuaciones en mi Barrio"</strong>.</p>
+            <p>¡Lucho ahora es un maestro del álgebra y su tío está muy orgulloso!</p>
+            <br>
+            <button class="btn-primary" onclick="window.location.href='index.html'">Volver al Inicio</button>
+        </div>
+    </div>
+
+    <script src="modulo4.js"></script>
+</body>
+</html>
