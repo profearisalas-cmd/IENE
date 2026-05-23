@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Ecuaciones en mi Barrio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Sidebar de Navegación -->
+    <nav class="sidebar">
+        <div class="logo">
+            <h2>Ecuaciones<br><span>en mi Barrio</span></h2>
+        </div>
+        <ul class="nav-links">
+            <li class="active"><a href="#"><span class="icon">🗺️</span> Mapa</a></li>
+            <li><a href="#"><span class="icon">🎯</span> Misiones</a></li>
+            <li><a href="#"><span class="icon">🏪</span> Mi Tienda</a></li>
+            <li><a href="#"><span class="icon">💬</span> Foro</a></li>
+        </ul>
+        <div class="character-container">
+            <!-- Representación de Lucho -->
+            <div class="lucho-avatar">👦🏽</div>
+            <p>"¡A meterle mente!"</p>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <main class="main-content">
+        <!-- Topbar: Gamificación -->
+        <header class="topbar">
+            <div class="greeting">
+                <h1>¡Hola, Lucho! 👋</h1>
+                <p>Nivel actual: <strong>🐢 Nivel Tortuga</strong></p>
+            </div>
+            <div class="gamification-stats">
+                <div class="stat-pill streak">
+                    <span class="icon">🔥</span>
+                    <span class="value">3 días</span>
+                </div>
+                <div class="stat-pill coins">
+                    <span class="icon">🪙</span>
+                    <span class="value">1,500 pts</span>
+                </div>
+                <div class="profile-pic">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lucho&backgroundColor=ffd5dc" alt="Perfil">
+                </div>
+            </div>
+        </header>
+
+        <!-- Progreso General -->
+        <section class="progress-section">
+            <div class="progress-header">
+                <h3>Tu Progreso en el Barrio</h3>
+                <span>25% Completado</span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" style="width: 25%;"></div>
+            </div>
+        </section>
+
+        <!-- Mapa de Módulos (Grid) -->
+        <section class="modules-grid">
+            <!-- Módulo 1: Completado -->
+            <article class="module-card completed">
+                <div class="module-icon">🛒</div>
+                <div class="module-info">
+                    <h3>Módulo 1: El Lenguaje de la Tienda</h3>
+                    <p>Traduce compras a lenguaje algebraico.</p>
+                    <div class="status-badge">Completado ⭐</div>
+                </div>
+            </article>
+
+            <!-- Módulo 2: Desbloqueado (Activo) -->
+            <article class="module-card active" onclick="iniciarModulo2()">
+                <div class="module-icon">⚖️</div>
+                <div class="module-info">
+                    <h3>Módulo 2: Balanza de Decisiones</h3>
+                    <p>Encuentra el equilibrio en las ecuaciones.</p>
+                    <button class="btn-primary">Continuar Aventura</button>
+                </div>
+            </article>
+
+            <!-- Módulo 3: Activo -->
+            <article class="module-card active" onclick="window.location.href='modulo3.html'">
+                <div class="module-icon">🏍️</div>
+                <div class="module-info">
+                    <h3>Módulo 3: Retos del Pozón</h3>
+                    <p>Resuelve problemas del día a día.</p>
+                    <button class="btn-primary">Aceptar Reto</button>
+                </div>
+            </article>
+
+            <!-- Módulo 4: Activo -->
+            <article class="module-card active" onclick="window.location.href='modulo4.html'">
+                <div class="module-icon">🎪</div>
+                <div class="module-info">
+                    <h3>Módulo 4: Feria de Soluciones</h3>
+                    <p>Crea tu propio reto matemático.</p>
+                    <button class="btn-primary">Entrar a la Feria</button>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- Modal/Overlay para simulador rápido (Ejemplo) -->
+    <div class="overlay" id="simulatorOverlay">
+        <div class="modal-content">
+            <button class="close-btn" onclick="cerrarSimulador()">✖</button>
+            <h2>⚖️ Cargando Balanza...</h2>
+            <p>Preparando el inventario de la tienda del Tío...</p>
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
