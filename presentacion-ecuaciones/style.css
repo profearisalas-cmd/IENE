@@ -1,0 +1,163 @@
+:root {
+    --primary: #00A896;
+    --secondary: #F0A500;
+    --accent: #FF5722;
+    --bg-dark: #1A252F;
+    --text-light: #F4F7F6;
+    --card-bg: rgba(255, 255, 255, 0.95);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: var(--bg-dark);
+    color: #333;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Background Animation */
+.background-animation {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(120deg, #1A252F, #00A896, #2C3E50);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Views Navigation */
+.slide-view {
+    display: none;
+    min-height: 100vh;
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInSlide 0.5s ease;
+}
+
+.slide-view.active {
+    display: block;
+}
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Typography & Common */
+h1, h2, h3 { font-family: 'Outfit', sans-serif; }
+
+.section-title {
+    color: var(--text-light);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.subtitle { color: #E2E8F0; text-align: center; margin-bottom: 3rem; font-size: 1.2rem; }
+
+.back-btn {
+    background: rgba(255,255,255,0.2); color: white;
+    border: none; padding: 0.8rem 1.5rem; border-radius: 30px;
+    font-weight: bold; cursor: pointer; margin-bottom: 2rem;
+    transition: background 0.3s;
+}
+.back-btn:hover { background: rgba(255,255,255,0.4); }
+
+.btn-primary { background: var(--secondary); color: white; border: none; padding: 1rem 2.5rem; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(240, 165, 0, 0.4); }
+.btn-primary:hover { transform: scale(1.05); }
+
+.btn-secondary { background: white; color: var(--primary); border: 2px solid var(--primary); padding: 1rem 2.5rem; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+.btn-secondary:hover { background: var(--primary); color: white; transform: scale(1.05); }
+
+/* VISTA 0: Cover */
+.cover-content { text-align: center; color: white; margin-top: 15vh; }
+.cover-content h1 { font-size: 4.5rem; color: var(--secondary); text-shadow: 3px 3px 6px rgba(0,0,0,0.4); margin-bottom: 1rem; }
+.cover-content h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+.cover-content p { font-size: 1.3rem; margin-bottom: 3rem; }
+
+/* VISTA 1: Hub (Navegación No Lineal) */
+.hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+
+.hub-card {
+    background: var(--card-bg); padding: 2.5rem 1.5rem; border-radius: 20px;
+    text-align: center; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-bottom: 5px solid transparent;
+}
+.hub-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.3); border-bottom-color: var(--primary); }
+
+.hub-card .icon { font-size: 4rem; margin-bottom: 1rem; }
+.hub-card h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1.4rem; }
+
+.live-demo-section { text-align: center; margin-top: 4rem; }
+
+/* VISTA 2: Contexto (Tabs Interactivas) */
+.split-layout { background: var(--card-bg); border-radius: 20px; display: flex; overflow: hidden; min-height: 400px; }
+.interactive-panel { width: 30%; background: #E2E8F0; display: flex; flex-direction: column; }
+.tab-btn { background: none; border: none; padding: 1.5rem; text-align: left; font-size: 1.2rem; font-weight: bold; color: var(--text-dark); cursor: pointer; transition: background 0.3s; border-left: 5px solid transparent; }
+.tab-btn:hover { background: rgba(255,255,255,0.5); }
+.tab-btn.active { background: white; border-left-color: var(--primary); color: var(--primary); }
+
+.content-panel { width: 70%; padding: 3rem; }
+.tab-content { display: none; animation: fadeInSlide 0.3s; }
+.tab-content.active { display: block; }
+.tab-content h3 { color: var(--primary); margin-bottom: 1.5rem; font-size: 1.8rem; }
+.tab-content p, .tab-content ul { font-size: 1.15rem; line-height: 1.8; }
+.tab-content ul { padding-left: 2rem; }
+.tab-content li { margin-bottom: 1rem; }
+
+/* VISTA 3: Diseño (Acordeón) */
+#design-accordion { background: var(--card-bg); border-radius: 20px; padding: 2rem; }
+.accordion-item { border: 2px solid #E2E8F0; border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+.accordion-header { background: #F8FAFC; padding: 1.5rem; font-size: 1.3rem; font-weight: bold; cursor: pointer; color: var(--primary); transition: background 0.3s; }
+.accordion-header:hover { background: #E2E8F0; }
+.accordion-body { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; }
+.accordion-item.active .accordion-body { padding: 1.5rem; max-height: 500px; }
+
+.badges-container { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
+.tech-badge { background: var(--text-dark); color: white; padding: 0.5rem 1rem; border-radius: 8px; font-weight: bold; font-family: monospace; }
+
+/* VISTA 4: Pedagogía (Flip Cards) */
+.pedagogy-grid { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+
+.flip-card { background-color: transparent; width: 400px; height: 350px; perspective: 1000px; cursor: pointer; }
+.flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+.flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 20px; padding: 2rem; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.flip-card-front { background-color: var(--card-bg); color: var(--primary); }
+.flip-card-front h3 { font-size: 2rem; margin-bottom: 1rem; }
+.flip-card-front p { color: var(--text-muted); }
+.flip-card-back { background-color: var(--primary); color: white; transform: rotateY(180deg); text-align: left; align-items: flex-start; }
+.flip-card-back ul { font-size: 1.1rem; line-height: 1.6; padding-left: 1.5rem; }
+.flip-card-back li { margin-bottom: 1rem; }
+
+/* VISTA 5: Resultados (Timeline/Nodes) */
+.outcomes-container { display: flex; flex-direction: column; gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+.outcome-node { background: var(--card-bg); border-radius: 15px; padding: 1.5rem; display: flex; align-items: center; gap: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transform: translateX(-50px); opacity: 0; animation: slideInNode 0.5s forwards; }
+.outcome-node:nth-child(1) { animation-delay: 0.1s; }
+.outcome-node:nth-child(2) { animation-delay: 0.3s; }
+.outcome-node:nth-child(3) { animation-delay: 0.5s; }
+.outcome-node:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes slideInNode { to { transform: translateX(0); opacity: 1; } }
+
+.node-icon { background: var(--secondary); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; font-weight: bold; flex-shrink: 0; }
+.node-text { font-size: 1.15rem; line-height: 1.5; }
+.node-text strong { color: var(--primary); }
+
+@media (max-width: 768px) {
+    .split-layout { flex-direction: column; }
+    .interactive-panel { width: 100%; flex-direction: row; overflow-x: auto; }
+    .content-panel { width: 100%; padding: 1.5rem; }
+    .cover-content h1 { font-size: 3rem; }
+    .flip-card { width: 100%; }
+}
