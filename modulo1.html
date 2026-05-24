@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1 - El Lenguaje de la Tienda</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="modulo1.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <header class="app-header">
+        <button class="back-btn" onclick="window.location.href='index.html'">⬅ Volver al Mapa</button>
+        <div class="level-info">
+            <h1>🛒 Módulo 1: El Lenguaje de la Tienda</h1>
+            <p id="missionIndicator">Misión 1 de 1: El Lenguaje Secreto</p>
+        </div>
+        <div class="score-display">🪙 <span id="current-coins">1500</span> Pesos</div>
+    </header>
+
+    <main class="story-container">
+        <!-- Presentación de la Historia -->
+        <section class="story-card">
+            <div class="shop-banner" style="background-image: url('tienda_barrio.png');">
+                <div class="overlay-gradient"></div>
+            </div>
+            
+            <div class="character-dialogue">
+                <div class="avatar-holder">
+                    <img src="lucho.png" alt="Lucho Avatar" class="lucho-img">
+                </div>
+                <div class="speech-bubble-wrapper">
+                    <div class="lucho-name">Lucho</div>
+                    <div class="speech-bubble">
+                        "¡Hola! Soy <strong>Lucho</strong>. En la tienda de mi tío en El Pozón, a veces anotamos los precios con códigos para que no se nos olviden. Por ejemplo, si un Mango vale $1.000, ponemos <strong>'M = 1000'</strong>. Hoy vas a aprender ese lenguaje secreto: el <strong>álgebra</strong>."
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactividad: El Tablero de Códigos -->
+        <section class="interactive-blackboard">
+            <h3>🍎 Toca un producto para ver su código secreto:</h3>
+            <div class="fruits-grid">
+                <div class="fruit-card" onclick="selectFruit('mango', 'M', 1000, '🥭')">
+                    <span class="fruit-emoji">🥭</span>
+                    <span class="fruit-name">Mango</span>
+                    <span class="fruit-price">$1.000</span>
+                </div>
+                <div class="fruit-card" onclick="selectFruit('coco', 'C', 2000, '🥥')">
+                    <span class="fruit-emoji">🥥</span>
+                    <span class="fruit-name">Coco</span>
+                    <span class="fruit-price">$2.000</span>
+                </div>
+                <div class="fruit-card" onclick="selectFruit('corozo', 'Co', 500, '🍒')">
+                    <span class="fruit-emoji">🍒</span>
+                    <span class="fruit-name">Corozo</span>
+                    <span class="fruit-price">$500</span>
+                </div>
+                <div class="fruit-card" onclick="selectFruit('aguacate', 'A', 1500, '🥑')">
+                    <span class="fruit-emoji">🥑</span>
+                    <span class="fruit-name">Aguacate</span>
+                    <span class="fruit-price">$1.500</span>
+                </div>
+            </div>
+
+            <!-- Blackboard Display -->
+            <div class="blackboard">
+                <div class="blackboard-header">TIENDA DEL TÍO - LENGUAJE SECRETO</div>
+                <div class="blackboard-body" id="blackboardBody">
+                    <span class="blinking-cursor">&gt; Toca una fruta arriba para registrar el código...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reto Rápido de Validación -->
+        <section class="mini-challenge" id="challengeSection">
+            <h3>🎯 ¡Tu primer reto algebraico!</h3>
+            <p>Si un <strong>Aguacate 🥑</strong> vale <strong>$1.500</strong>, ¿cómo escribirías su código en el lenguaje secreto?</p>
+            
+            <div class="equation-slots">
+                <div class="slot" id="slot-var" onclick="focusSlot('slot-var')">?</div>
+                <div class="math-op">=</div>
+                <div class="slot" id="slot-val" onclick="focusSlot('slot-val')">?</div>
+            </div>
+
+            <div class="options-container">
+                <p class="help-text">Elige la letra o el valor correspondiente:</p>
+                <div class="options-group" id="optionsGroup">
+                    <button class="option-btn" onclick="placeValue('A')">A</button>
+                    <button class="option-btn" onclick="placeValue('1000')">1000</button>
+                    <button class="option-btn" onclick="placeValue('M')">M</button>
+                    <button class="option-btn" onclick="placeValue('1500')">1500</button>
+                    <button class="option-btn" onclick="placeValue('Co')">Co</button>
+                </div>
+            </div>
+
+            <div class="action-row">
+                <button class="btn-check" id="checkBtn" onclick="verifyChallenge()" disabled>Verificar Código</button>
+            </div>
+            
+            <div id="feedbackMsg" class="feedback-msg hidden"></div>
+        </section>
+
+        <!-- Pantalla de Éxito -->
+        <div class="victory-overlay" id="victoryScreen">
+            <div class="victory-card">
+                <h2>¡Excelente Trabajo! 🎖️</h2>
+                <p>Has aprendido los conceptos básicos del Lenguaje Algebraico. Ahora Lucho y tú pueden descifrar las cuentas más rápido.</p>
+                <div class="reward">🪙 + 1000 Pesos</div>
+                <button class="btn-primary" onclick="finishModule()">Regresar al Mapa</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="modulo1.js"></script>
+</body>
+</html>
